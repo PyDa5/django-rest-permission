@@ -37,7 +37,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-2、在permissions.py导入getGenericAPIViewPermission，获取GenericAPIViewPermission
+2、在permissions.py导入getGenericAPIViewPermission，获取GenericViewPermission
 
 ```python
 from django_rest_permission.permissions import getGenericViewPermission
