@@ -154,19 +154,22 @@ def collect_modules_permissions(modules: list):
                     else:
                         perm_code, perm_name = perm_desc
                     validate_perm_code(perm_code)
-                    perm = {
-                        'name': perm_name,
-                        'content_type_id': content_type_id,
-                        'codename': PERMISSION_CODENAME_PATTERN.format(
+                    codename = PERMISSION_CODENAME_PATTERN.format(
                             app_name=app_name,
                             view_group=view_group,
                             permission_code=perm_code
                         )
+                    perm = {
+                        'name': perm_name,
+                        'content_type_id': content_type_id,
+                        'codename': codename
                     }
 
                     obj: Permission = Permission.objects.filter(**perm).first()
                     if obj is None:
                         Permission.objects.create(**perm)
+                        print(f'{app_name} ==> {codename}')
+    print('ok')
 
 
 def collect_all_installed_apps_access_permissions():
