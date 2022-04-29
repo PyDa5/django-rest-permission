@@ -48,8 +48,8 @@ GenericAPIViewPermission = getGenericViewPermission()
 
 3、在views.py导入并使用获取GenericAPIViewPermission
 ```python
-from rest_framework.views import APIView
 from django.views.generic.base import View
+from rest_framework.views import APIView
 from myapp.permissions import GenericViewPermission
 
 
