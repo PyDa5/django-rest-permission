@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ```python
 from django_rest_permission.permissions import getGenericViewPermission
 
-GenericAPIViewPermission = getGenericViewPermission()
+GenericViewPermission = getGenericViewPermission()
 ...
 ```
 
