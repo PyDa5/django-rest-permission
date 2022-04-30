@@ -25,7 +25,7 @@ myapp
     - ...
 ```
 
-#### 1、配置settings.py
+#### 1、settings.py
 ```python
 INSTALLED_APPS = [
     '...',
@@ -34,18 +34,26 @@ INSTALLED_APPS = [
 ]
 ```
 
-####  2、在APP的permissions.py导入getGenericViewPermission，获取GenericViewPermission
+####  2、permissions.py
 
 ```python
+"""
+在APP下的permissions.py导入getGenericViewPermission，获取GenericViewPermission
+"""
 from django_rest_permission.permissions import getGenericViewPermission
 
 GenericAPIViewPermission = getGenericViewPermission()
 ...
 ```
 
-#### 3、在views.py导入GenericViewPermission，作为permission_classes，
-同时声明两个类属性：view_group、view_access_permissions
+#### 3、views.py
 ```python
+"""
+1、导入GenericViewPermission，permission_classes = [permission_classes]
+2、视图类中同时声明两个类属性：view_group、view_access_permissions
+   view_group 对应数据库django_content_type表的model字段
+   view_access_permissions 用于生成数据库auth_permission表的name、codename字段
+"""
 from rest_framework.views import APIView
 from django.views.generic.base import View
 from myapp.permissions import GenericViewPermission
@@ -97,7 +105,7 @@ class MyView02(View):
     ...
 ```
 
-#### 4、权限入库：自动收集已加载的APP中APIView视图类中声明的权限
+#### 4、权限入库：自动从已加载的APP中收收集在视图类声明的权限
 
 > 方式1：python manage.py collectpermissions
 
@@ -105,14 +113,14 @@ class MyView02(View):
 
 执行以上命令后，数据库的django_content_type、auth_permission会生成视图对应的权限信息
 
-#### 5、数据库结构 —— django_content_type
+#### 5、django_content_type（自动生成）
 
 | id  | app_label | model |
 |-----|-----------|-------|
 | 666 | drp_myapp | 购物车   |
 | 777 | drp_myapp | 用户管理  |
 
-#### 6、数据库结构 —— auth_permission
+#### 6、auth_permission（自动生成）
 
 | id| name| content_type_id | codename                 |
 |---|-----|-----------------|--------------------------|
@@ -129,3 +137,6 @@ class MyView02(View):
 
 例如当为用户分配“drf_myapp.view://myapp/购物车/清空购物车”权限时，
 用户就可以通过delete请求方法，访问myapp下MyAPIView01视图中的delete方法。
+
+## 注意事项
+* 不适用于ModelViewSet，因为其中的get请求指向CreateAPIView和ListAPIView
