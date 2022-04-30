@@ -1,6 +1,10 @@
-## 功能
+## 功能(Project description)
 
-在视图类中声明视图分组view_group、视图访问权限view_access_permissions这两个类属性，并将GenericViewPermission添加至permission_classes，就能像python manage.py migrate一样，通过python manage.py collectpermissions命令将视图访问权限自动迁移至数据库。
+在视图类中声明view_group、view_access_permissions这两个类属性，并将GenericViewPermission添加至permission_classes，就能像python manage.py migrate一样，通过python manage.py collectpermissions命令将视图访问权限自动迁移至数据库。主要好处在于：
+* 1、method+url级别的权限控制
+* 2、权限声明简单
+* 3、权限自动迁移入库
+* 4、可选是否使用缓存，并提供了清除和刷新用户权限缓存的接口
 
 
 ## 安装(Install)
