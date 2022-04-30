@@ -88,11 +88,11 @@ class MyView02(View):
     permission_classes = [GenericViewPermission]
     
     def get(self, request):
-        # get请求且用户有“查询购物车商品”权限时走这里
+        # get请求且用户有“查询用户信息”权限时走这里
         pass
     
     def post(self, request):
-        # post请求且用户有“创建购物车”权限时走这里
+        # post请求且用户有“新建用户”权限时走这里
         pass
     ...
 ```
