@@ -107,7 +107,7 @@ class MyView02(View):
     ...
 ```
 
-#### 4、权限入库：自动从已加载的APP中收收集在视图类声明的权限
+#### 4、权限入库：自动从已加载的APP中收集在视图类声明的权限
 
 > 方式1：python manage.py collectpermissions
 
