@@ -109,8 +109,8 @@ class MyView02(View):
 
 | id  | app_label | model |
 |-----|-----------|-------|
-| 666 | drf_myapp | 购物车   |
-| 777 | drf_myapp | 用户管理  |
+| 666 | drp_myapp | 购物车   |
+| 777 | drp_myapp | 用户管理  |
 
 #### 6、数据库结构 —— auth_permission
 
