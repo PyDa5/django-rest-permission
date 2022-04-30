@@ -64,7 +64,7 @@ from myapp.permissions import GenericViewPermission
 class MyAPIView01(APIView):
     # 视图权限分组，对应django_content_type表中的model字段，model = 购物车
     view_group = '购物车'
-    # 用于生成auth_permissions中的信息
+    # 用于生成auth_permissions中的信息，key-value格式可以是：METHOD: perm_code
     view_access_permissions = {
         'GET': '查询购物车商品',  # name = 查询购物车商品，codename = view://myapp/购物车/查询购物车商品
         'POST': '创建购物车',     # name = 创建购物车， codename = view://myapp/购物车/创建购物车
@@ -88,7 +88,7 @@ class MyAPIView01(APIView):
 class MyView02(View):
     # 视图权限分组，对应django_content_type表中的model字段，model = 用户管理
     view_group = '用户管理'
-    # 用于生成auth_permissions中的信息
+    # 用于生成auth_permissions中的信息，key-value格式可以是：METHOD: (perm_code, perm_name)
     view_access_permissions = {
         'GET': ('view_user_info', '查询用户信息'),       # name = 查询用户信息, codename = view://myapp/用户管理/view_user_info
         'POST': ('create_user', '新建用户'),             # name = 新建用户, codename = view://myapp/用户管理/create_user
