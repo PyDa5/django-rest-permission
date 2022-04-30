@@ -63,9 +63,9 @@ class MyAPIView01(APIView):
     # 用于生成auth_permissions中的信息
     view_access_permissions = {
         'GET': '查询购物车商品',  # name = 查询购物车商品，codename = view://myapp/购物车/查询购物车商品
-        'POST': '创建购物车',  # name = 创建购物车， codename = view://myapp/购物车/创建购物车
+        'POST': '创建购物车',     # name = 创建购物车， codename = view://myapp/购物车/创建购物车
         'PUT': '修改购物车商品',  # name = 修改购物车商品, codename = view://myapp/购物车/修改购物车商品
-        'DELETE': '清空购物车'  # name = 清空购物车， codename = view://myapp/购物/清空购物车
+        'DELETE': '清空购物车'    # name = 清空购物车， codename = view://myapp/购物/清空购物车
     }
     # 引入权限校验类
     permission_classes = [GenericViewPermission]
@@ -86,10 +86,10 @@ class MyView02(View):
     view_group = '用户管理'
     # 用于生成auth_permissions中的信息
     view_access_permissions = {
-        'GET': ('view_user_info', '查询用户信息'),  # name = 查询用户信息, codename = view://myapp/用户管理/view_user_info
-        'POST': ('create_user', '新建用户'),# name = 新建用户, codename = view://myapp/用户管理/create_user
+        'GET': ('view_user_info', '查询用户信息'),       # name = 查询用户信息, codename = view://myapp/用户管理/view_user_info
+        'POST': ('create_user', '新建用户'),             # name = 新建用户, codename = view://myapp/用户管理/create_user
         'PUT': ('modify_user_profile', '修改用户资料'),  # name = 修改用户资料, codename = view://myapp/用户管理/modify_user_profile
-        'DELETE': ('delete_user', '删除用户')  # name = 删除用户, codename = view://myapp/用户管理/delete_user
+        'DELETE': ('delete_user', '删除用户')            # name = 删除用户, codename = view://myapp/用户管理/delete_user
     }
     permission_classes = [GenericViewPermission]
     
@@ -133,8 +133,7 @@ class MyView02(View):
 
 #### 7、管理后台创建用户、用户组，并分配权限 
 
-例如当为用户分配“drf_myapp.view://myapp/购物车/清空购物车”权限时，
-用户就可以通过delete请求方法，访问myapp下MyAPIView01视图中的delete方法。
+例如，当为用户分配“drp_myapp.view://myapp/购物车/清空购物车”权限时，用户就可以通过delete请求方法，访问myapp下MyAPIView01视图中的delete方法。
 
 ## 注意事项
 * 适用于APIView及其子类，但不适用于ModelViewSet，因为ModelViewSet的get请求可以路由给retrieve()和list()方法处理，暂时还未找到区分路由来源的办法！
