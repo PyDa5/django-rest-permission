@@ -14,7 +14,7 @@
     > username：admin
     > password：123
     
-## 启动myprojetc
+## 启动项目
 > python manage.py runserver
 
 ## 用管理员账号创建一个普通员工账号(add a staff)
