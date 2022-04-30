@@ -1,15 +1,17 @@
 ### 功能
-
+--------
 * 一个可独立加载的APP，能动态配置用户对视图的访问权限
 
 * 能像python manage.py migrate一样，将视图权限自动迁移至数据库
 
 
 ### 安装(Install)
-> $ pip install django-rest-permission
+-----------------
+> pip install django-rest-permission
 
 
 ### 使用(How to use)
+--------------------
 ####  项目结构如下
 ```
 myproject
