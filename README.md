@@ -27,8 +27,8 @@ myapp
 ```python
 INSTALLED_APPS = [
     ...,
-    'django_rest_permission',
-    ...
+    'rest_framework',
+    'django_rest_permission'
 ]
 ```
 
