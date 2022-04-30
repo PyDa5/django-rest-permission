@@ -26,9 +26,9 @@ myapp
 #### 1、settings.py
 ```python
 INSTALLED_APPS = [
-    '...',
+    ...,
     'django_rest_permission',
-    '...'
+    ...
 ]
 ```
 
