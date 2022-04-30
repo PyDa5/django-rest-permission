@@ -1,23 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-基于视图的权限控制
-1、获取APP装载的所有继承于View的视图
-2、若视图中定义了类属性view_name/view_group和view_actions，则将为视图自动生成权限清单，
-   在数据库中的django_content_type存入：app_label=django_rest_permission，model=viewpermissions
-   存入数据库中的auth_permissions，权限codename为：view://app/view_group/permission_name
-app_label 	= perm_appname
-model		= view_group
-name		= perm_name
-codename	= perm_code
-
-app
-    - view_group
-    - view_access_permissions
-        - GET       查询XX
-        - POST      创建XX
-        - DELETE    删除XX
-        - PUT       修改XX
-        - ...
+视图权限入库
+python manage.py collectpermissions
+python manage.py collectpermissions app_name
 """
 import os
 import re
@@ -31,7 +16,6 @@ from django.db import transaction
 from django.views.generic.base import View
 
 from django_rest_permission.apps import DrfPermConfig
-from django_rest_permission.settings import *
 
 
 def validate_perm_code(codename: str):
