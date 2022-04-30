@@ -139,4 +139,4 @@ class MyView02(View):
 用户就可以通过delete请求方法，访问myapp下MyAPIView01视图中的delete方法。
 
 ## 注意事项
-* 不适用于ModelViewSet，因为其中的get请求指向CreateAPIView和ListAPIView
+* 适用于APIView及其子类，但不适用于ModelViewSet，因为ModelViewSet的get请求可以路由给retrieve()和list()方法处理，暂时还未找到区分路由来源的办法！
