@@ -13,13 +13,16 @@
     > python manage.py createsuperuser
     > username：admin
     > password：123
+    
+## 启动myprojetc
+> python manage.py runserver
 
 ## 用管理员账号创建一个普通员工账号(add a staff)
     username: Alex
     password: Django666
     Staff status: √
 
-## 验证视图访问权限配置是否成功(Test)
+## myproject项目下的myapp中的UserAPIView访问权限测试(Test)
 step1：浏览器打开<http://127.0.0.1:8000/myapp/user?format=json>，Response如下：
    
     {"detail":"Authentication credentials were not provided."}
