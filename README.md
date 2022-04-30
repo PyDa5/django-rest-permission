@@ -1,8 +1,6 @@
 ## 功能
 
-* 一个可独立加载的APP，能动态配置用户对视图的访问权限
-
-* 能像python manage.py migrate一样，将视图权限自动迁移至数据库
+在视图类中声明视图分组view_group、视图访问权限view_access_permissions这两个类属性，并将GenericViewPermission添加至permission_classes，就能像python manage.py migrate一样，通过python manage.py collectpermissions命令将视图访问权限自动迁移至数据库。
 
 
 ## 安装(Install)
