@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-次配置文件在django settings.py中的配置项为REST_PERMISSION。
+此配置文件在django settings.py中的配置项为REST_PERMISSION。
 """
 
 # 缓存权限键样式
