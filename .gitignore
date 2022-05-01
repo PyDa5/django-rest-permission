@@ -1,0 +1,14 @@
+
+venv/
+
+.idea/
+
+myproject/__pycache__/
+
+myapp/__pycache__/
+
+django_rest_permission/__pycache__/
+
+django_rest_permission/management/__pycache__/
+
+django_rest_permission/management/commands/__pycache__/

@@ -145,7 +145,6 @@ class _GenericViewPermission(BasePermission):
                             1、{'GET': (perm_code, perm_name), 'POST': (perm_code, perm_name),...}
                             2、{'GET': perm_code, 'POST': perm_code,...}，value为字符串时，perm_name=perm_code
     """
-    allowed_methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
 
     def has_permission(self, request: Request, view: View):
         use_cache = getattr(self, 'use_cache')
@@ -157,16 +156,14 @@ class _GenericViewPermission(BasePermission):
         view_access_permissions_name = getattr(self, 'view_access_permissions_name')
 
         view_group = getattr(view, view_group_name)  # 视图名称(对应django_content_type中的model名称)
-        view_access_permissions = getattr(view, view_access_permissions_name)  # 映射：请求方法 ==> 权限名称
+        view_access_permissions: dict = getattr(view, view_access_permissions_name)  # 映射：请求方法 ==> 权限名称
 
         method = request.method
+        if hasattr(view, 'action'):
+            method = getattr(view, 'action')
 
         # 当前请求所需权限
-        if method not in view_access_permissions:
-            return False
-
-        # 除了allowed_methods中的请求方法，其它请求方法不做限制
-        if method not in self.allowed_methods:
+        if method not in view_access_permissions.keys():
             return True
 
         user: User = request.user
@@ -185,7 +182,7 @@ class _GenericViewPermission(BasePermission):
         if not user_permissions:
             return False
 
-        app_name = getattr(self, 'app_name')  # 当前视图所在APP名称
+        app_name = getattr(self, 'app_name')  # 当前视图所在APP名称，从执行gerGenericViewPermission()，从上下文获取
 
         # 鉴权
         if type(view_access_permissions[method]) == str:
