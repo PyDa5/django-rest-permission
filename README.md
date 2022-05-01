@@ -12,7 +12,7 @@
 > pip install django-rest-permission
 
 ## 使用(How to use)
-####  项目结构如下(可参考tests/myproject)
+####  项目结构如下
 ```
 myproject
     - settings.py
