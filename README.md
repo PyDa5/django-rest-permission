@@ -1,10 +1,16 @@
 ## 功能(Project description)
-
-在视图类中声明view_group、view_access_permissions这两个类属性，并将GenericViewPermission添加至permission_classes，就能像python manage.py migrate一样，通过python manage.py collectpermissions命令将视图访问权限自动迁移至数据库。主要好处在于：
-* 1、method+url级别的权限控制
-* 2、权限声明简单
-* 3、权限自动迁移入库
-* 4、可选是否使用缓存，并提供了清除和刷新用户权限缓存的接口
+若视图继承自djangorestframework的APIView，则此APP可帮助你方便设置用户对视图的访问权限。
+```
+1、在视图类中声明view_group、view_access_permissions这两个类属性，属性值会对应生成django_content_type、auth_permission的表内容；
+2、permission_classes=[GenericViewPermission, ..]，permission_classes中添加GenericViewPermission；
+3、执行python manage.py collectpermissions命令，将视图中声明的视图访问权限自动迁移至数据库。
+```
+好处在于：
+```
+* 1、method+url级别的权限控制；
+* 2、权限声明简单；
+* 3、定义的权限自动入库。
+```
 
 
 ## 安装(Install)
