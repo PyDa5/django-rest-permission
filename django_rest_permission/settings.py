@@ -10,7 +10,8 @@ APP_LABEL_PATTERN = 'drp_{app_name}'
 PERMISSION_CODENAME_PATTERN = 'view://{app_name}/{view_group}/{permission_code}'
 
 VIEW_GROUP_PROP = 'view_group'
-VIEW_ACCESS_PERMISSIONS_PROP = 'view_access_permissions'
+# VIEW_ACCESS_PERMISSIONS_PROP = 'view_access_permissions'
+VIEW_ACCESS_PERMISSIONS_PROP = 'view_perms'
 
 # 这个配置项会混入到django的配置文件里面去
 REST_PERMISSION = {
