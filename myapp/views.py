@@ -12,7 +12,7 @@ from myapp.serializers import UserSerializer
 
 class UserAPIView(APIView):
     view_group = 'user'
-    view_access_permissions = {
+    view_perms = {
         'GET': ('view_user_info', '查询用户信息'),
         'POST': ('create_user', '新建用户'),
         'PUT': ('modify_user_profile', '修改用户资料'),
@@ -38,7 +38,7 @@ class TestModelViewSet(ModelViewSet):
     serializer_class = UserSerializer
 
     view_group = 'resource'
-    view_access_permissions = {
+    view_perms = {
         'list': 'list_resources',
         'create': 'create_resource',
         'destroy': 'destroy_resource',
