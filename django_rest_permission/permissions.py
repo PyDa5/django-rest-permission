@@ -137,6 +137,16 @@ def update_cache_of_user_permissions(request: Request, view: View, max_age, perm
     cache_user_permissions(request, view, max_age, perm_cache_key_pattern=perm_cache_key_pattern)
 
 
+def has_view_permission(user, perm_name, group_name, app_name):
+    # app_name：'drp_{app_name}'
+    # perm_name：'view://{app_name}/{view_group}/{permission_code}'
+    user: User
+    perm_code = APP_LABEL_PATTERN.format(app_name=app_name) + '.' + PERMISSION_CODENAME_PATTERN.format(
+        app_name=app_name, view_group=group_name, permission_code=perm_name)
+    print(perm_code)
+    return user.has_perm(perm_code)
+
+
 class _GenericViewPermission(BasePermission):
     """
     视图级别的权限控制，在视图类中定义view_group和view_access_permissions来声明访问视图所需要的权限

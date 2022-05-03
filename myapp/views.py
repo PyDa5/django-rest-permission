@@ -9,6 +9,8 @@ from rest_framework.viewsets import ModelViewSet
 from myapp.permissions import GenericViewPermission
 from myapp.serializers import UserSerializer
 
+from django_rest_permission.permissions import has_view_permission
+
 
 class UserAPIView(APIView):
     view_group = 'user'
@@ -21,6 +23,7 @@ class UserAPIView(APIView):
     permission_classes = [GenericViewPermission]
 
     def get(self, req: Request):
+        print(has_view_permission(req.user, 'view_user_info', 'user', 'myapp'))  # 权限测试
         return Response({'msg': 'Your request`s method is GET'})
 
     def post(self, req: Request):
